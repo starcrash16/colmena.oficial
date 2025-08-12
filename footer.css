@@ -1,0 +1,27 @@
+.footer-colmena {
+    border-top: 2px solid #443609; /* línea separadora */
+    background-color: #000000;
+    color: #ffffff;
+  }
+  
+  .footer-logo {
+    height: 40px;
+    width: auto;
+  }
+  
+  .footer-text {
+    font-weight: bold;
+    font-size: 1.2rem;
+    color: #ffffff;
+  }
+  
+  .footer-icon {
+    font-size: 1.5rem;
+    color: #ffffff;
+    transition: color 0.3s ease;
+  }
+  
+  .footer-icon:hover {
+    color: #ffcc01; /* color al hover */
+  }
+  

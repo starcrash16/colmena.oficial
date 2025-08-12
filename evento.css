@@ -1,0 +1,10 @@
+.icono-flotante {
+    position: fixed; /* Se posiciona relativo a la ventana del navegador */
+    top: 50%;
+    left: 50%;
+    width: 60px;     /* Ancho del icono */
+    height: 60px;    /* Alto del icono */
+    object-fit: contain;
+    z-index: 9999;   /* Asegura que esté por encima de todo */
+    pointer-events: none; /* Evita que la imagen bloquee los clics en otros elementos */
+  }

@@ -1,0 +1,372 @@
+/* main.css (corregido) */
+
+/* ---------- Estilos generales existentes ---------- */
+.bienvenida {
+  background-color: #ffcc01 !important;
+  margin-bottom: 0; /* Elimina margen inferior */
+  margin-top: -1.5rem; /* Acerca el bloque a la imagen superior */
+}
+.animated-content {
+  min-height: 50vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.content-text {
+  text-align: center;
+  background: #ffffff;
+  border-radius: 16px;
+  border: 0.3em solid #443609;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+  display: flow-root; /* Evita colapso de márgenes y asegura que el borde inferior se vea */
+  padding-bottom: 1rem; /* Asegura separación interna antes del borde inferior */
+}
+.content-text h2 {
+  color: #000;
+  font-weight: bold;
+  margin: 0 0 .75rem;
+  line-height: 1.2;
+  position: relative;
+}
+.content-text p {
+  color: #000;
+  line-height: 1.7;
+  font-size: 1.05rem;
+  text-align: justify;
+  text-align-last: center;
+}
+
+.content-text p:last-child { margin-bottom: 0; }
+.content-text h2::after {
+  content: "";
+  display: block;
+  width: 100%;
+  height: 4px;
+  margin: 12px 0 0;
+  border-radius: 999px;
+  background: linear-gradient(90deg, #ffcc01, #ffb703);
+}
+
+/* Alargar más la línea en pantallas grandes */
+@media (min-width: 992px) {
+  .content-text h2::after {
+    width: 100%;
+    height: 5px;
+  }
+}
+
+
+
+/* Resaltado suave para palabras importantes */
+.content-text strong {
+  background: linear-gradient(transparent 70%, rgba(255, 204, 1, 0.35) 0);
+  padding: 0 .1em;
+}
+
+/* Aparición secuencial de párrafos */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.content-text p { opacity: 0; animation: fadeUp .6s ease-out forwards; }
+.content-text p:nth-of-type(2) { animation-delay: .12s; }
+.content-text p:nth-of-type(3) { animation-delay: .24s; }
+.content-text p:not(:last-child) {
+  margin-bottom: 1.5rem;
+}
+.fade-in {
+  animation: fadeIn 1s ease-in;
+}
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Responsivos de texto */
+@media (max-width: 576px) {
+  .content-text h2 { font-size: 1.7rem; }
+  .content-text p { font-size: 0.95rem; line-height: 1.55; }
+}
+@media (min-width: 577px) and (max-width: 768px) {
+  .content-text h2 { font-size: 2.1rem; }
+  .content-text p { font-size: 1.02rem; line-height: 1.6; }
+}
+@media (min-width: 769px) {
+  .content-text h2 { font-size: 2.3rem; }
+  .content-text p { font-size: 1.06rem; line-height: 1.7; }
+}
+
+/* ---------- Botón estilo (mantengo tu diseño, pero con tamaños fluidos) ---------- */
+.boton-colmena {
+  --borde: #443609;
+  --llenado: #ffcc01;
+  --fondo: #ffffff;
+  --color-texto: #000000;
+
+  color: var(--color-texto);
+  background-color: var(--fondo);
+  border: 0.3em solid var(--borde);
+  border-radius: 0.5em;
+  width: clamp(8rem, 20vw, 12em); /* escala según pantalla */
+  height: clamp(2.2rem, 5.5vw, 3em);
+  text-transform: none;
+  font-weight: bold;
+  font-family: sans-serif;
+ 
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+  transition: color 0.5s;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+.boton-colmena span {
+  position: absolute;
+  width: 25%;
+  height: 100%;
+  background-color: var(--llenado);
+  transform: translateY(150%);
+  border-radius: 50%;
+  left: calc((var(--n) - 1) * 25%);
+  transition: 0.5s;
+  transition-delay: calc((var(--n) - 1) * 0.1s);
+  z-index: -1;
+}
+.boton-colmena:hover {
+  color: #ffffff;
+}
+.boton-colmena:hover span {
+  transform: translateY(0) scale(2);
+}
+.boton-colmena span:nth-child(1) { --n: 1; }
+.boton-colmena span:nth-child(2) { --n: 2; }
+.boton-colmena span:nth-child(3) { --n: 3; }
+.boton-colmena span:nth-child(4) { --n: 4; }
+
+#boton1 {
+  border-top-right-radius: 2em;
+}
+#boton2 {
+  border-top-left-radius: 2em;
+}
+
+/* ---------- Imágenes (tamaño fluido y que se reduzcan si hace falta) ---------- */
+.section-image {
+  max-width: clamp(120px, 25vw, 300px);
+  width: 100%;
+  height: auto;
+  max-height: clamp(80px, 18vw, 200px);
+  object-fit: contain;
+  display: block;
+  box-sizing: border-box;
+  flex-shrink: 1;
+}
+
+/* ---------- GRID CORREGIDO: 2x2 fijo con áreas explícitas ---------- */
+/* - Siempre 2 columnas (2x2). - grid-template-areas fija el orden. */
+/* - padding solicitado incluido en el contenedor y borders visibles en cada celda. */
+
+.botones-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr; /* siempre dos columnas */
+  grid-template-rows: auto auto;
+  grid-template-areas:
+    "img-right boton-1"
+    "boton-2 img-left";
+  gap: 1rem;
+  padding: 1rem;               /* <-- padding pedido */
+  align-items: center;
+  justify-items: stretch;
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  background-color: #ffcc01; /* Fondo para la sección */
+}
+
+/* BORDES Y PAD PARA CADA "CUADRO" del grid (útil para debugging/visualizar) */
+.botones-grid > * {
+  padding: 0.75rem;                       /* padding dentro de la celda */
+  box-sizing: border-box;
+  min-height: 6rem;
+  display: flex;
+  align-items: center;
+}
+
+/* Asignación de áreas y alineamiento específico */
+.img-derecha {
+  grid-area: img-right;
+  justify-self: stretch;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end; /* imagen alineada a la derecha dentro de su celda */
+}
+.img-derecha .section-image {
+  margin-left: 0;
+  margin-right: 0;
+  max-width: clamp(90px, 22vw, 300px);
+}
+
+.boton-centro-1 {
+  grid-area: boton-1;
+  justify-self: stretch;
+  display: flex;
+  align-items: center;
+  justify-content:  flex-start;   /* botón centrado en su celda */
+}
+
+.boton-centro-2 {
+  grid-area: boton-2;
+  justify-self: stretch;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;   /* botón centrado en su celda */
+}
+
+.img-izquierda {
+  grid-area: img-left;
+  justify-self: stretch;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start; /* imagen alineada a la izquierda dentro de su celda */
+}
+.img-izquierda .section-image {
+  margin-left: 0;
+  margin-right: 0;
+  max-width: clamp(90px, 22vw, 300px);
+}
+
+/* ---------- Media queries: reducimos tamaños pero mantenemos 2x2 ---------- */
+/* NO cambiamos a una sola columna: el 2x2 se mantiene, solo reducimos espacios. */
+
+@media (max-width: 900px) {
+  .botones-grid {
+    gap: 0.6rem;
+    padding: 0.6rem;
+  }
+  .botones-grid > * {
+    min-height: 5rem;
+    border-width: 1.5px;
+    padding: 0.5rem;
+  }
+  .boton-colmena {
+    width: clamp(7rem, 22vw, 11rem);
+    height: clamp(2rem, 5vw, 2.8rem);
+  }
+  .section-image {
+    max-height: clamp(70px, 16vw, 180px);
+  }
+}
+
+@media (max-width: 480px) {
+  .botones-grid {
+    gap: 0.35rem;
+    padding: 0.4rem;
+  }
+  .botones-grid > * {
+    min-height: 4.2rem;
+    border-width: 1px;
+    padding: 0.35rem;
+  }
+  .boton-colmena {
+    width: clamp(6.5rem, 28vw, 9.5rem);
+    height: clamp(1.9rem, 5vw, 2.6rem);
+  }
+  .section-image {
+    max-width: clamp(70px, 26vw, 160px);
+    max-height: clamp(60px, 20vw, 120px);
+  }
+}
+
+
+/* Pequeños ajustes estéticos para que los bordes no choquen con el botón */
+.boton-centro-1 .boton-colmena,
+.boton-centro-2 .boton-colmena {
+  /* evitamos que el botón ocupe 100% del ancho si no quieres eso,
+     pero lo centramos en la celda. */
+  width: auto;
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+.botones-grid {
+  opacity: 0;
+  transform: translateY(50px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+/* Estado visible al hacer scroll */
+.botones-grid.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+ 
+ /* Mayor tamaño de botones en pantallas grandes */
+ @media (min-width: 901px) {
+   .boton-colmena {
+    font-size: 1.15rem;
+    height: 3.6rem;
+    width: clamp(10rem, 18vw, 14em);
+   }
+   .boton-centro-1 .boton-colmena,
+   .boton-centro-2 .boton-colmena {
+     padding-left: 1.5rem;
+     padding-right: 1.5rem;
+   }
+ }
+/* ---------- FIN ---------- */
+
+/* ---------- Tamaño de fuente responsivo para .botones-grid ---------- */
+
+/* Extra grande: ≥ 1400px */
+@media (min-width: 1400px) {
+  .botones-grid {
+    font-size: 1.25rem;
+  }
+}
+
+/* Grande: 1200px – 1399px */
+@media (min-width: 1200px) and (max-width: 1399px) {
+  .botones-grid {
+    font-size: 1.15rem;
+  }
+}
+
+/* Mediano: 992px – 1199px */
+@media (min-width: 992px) and (max-width: 1199px) {
+  .botones-grid {
+    font-size: 1.05rem;
+  }
+}
+
+/* Tablet horizontal: 768px – 991px */
+@media (min-width: 768px) and (max-width: 991px) {
+  .botones-grid {
+    font-size: 0.95rem;
+  }
+}
+
+/* Tablet vertical / móviles grandes: 576px – 767px */
+@media (min-width: 576px) and (max-width: 767px) {
+  .botones-grid {
+    font-size: 0.75rem;
+  }
+}
+
+/* Móviles medianos: 400px – 575px */
+@media (min-width: 400px) and (max-width: 580px) {
+  .botones-grid {
+    font-size: 0.6rem;
+  }
+}
+
+/* Móviles pequeños: < 400px */
+@media (max-width: 399px) {
+  .botones-grid {
+    font-size: 0.55rem;
+  }
+}

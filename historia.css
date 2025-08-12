@@ -1,0 +1,137 @@
+/* ============================================ */
+/* ESTILOS DE LA LÍNEA DE TIEMPO        */
+/* ============================================ */
+
+/* Contenedor principal de la línea de tiempo */
+.historia-timeline {
+    /* 1. CONFIGURACIÓN DE GRID */
+    display: grid;
+    /* Dos columnas de tamaño flexible, con un espacio de 40px en el centro para la línea */
+    grid-template-columns: 1fr 40px 1fr;
+    position: relative; /* Necesario para la línea vertical */
+  }
+  
+  /* La línea vertical en el centro */
+  .historia-timeline::before {
+    content: '';
+    position: absolute;
+    top: 15px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 4px; /* Grosor de la línea */
+    height: calc(100% - 30px); /* Altura total */
+    background-color: #ffc107; /* Un color dorado/miel, va bien con "Colmena" */
+    border-radius: 4px;
+  }
+  
+  /* Estilo base de cada párrafo/burbuja */
+  .parrafo-colmena {
+    padding: 1.5rem 2rem;
+    background-color: #ffffff;
+    border-radius: 16px; /* Bordes más redondeados */
+    box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.15); /* Sombra más suave y profesional */
+    margin-bottom: 2rem;
+    position: relative; /* Necesario para el "pico" de la burbuja */
+  
+    /* 2. ESTADO INICIAL DE LA ANIMACIÓN */
+    opacity: 0;
+    transform: translateY(30px) scale(0.95);
+    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1); /* Transición más suave */
+  }
+  
+  /* Coloca los elementos impares en la columna izquierda */
+  .parrafo-colmena:nth-child(odd) {
+    grid-column: 1; /* Asigna a la primera columna del grid */
+    text-align: right;
+    margin-right: 20px; /* Separación para que el "pico" no toque la línea */
+  }
+  
+  /* Coloca los elementos pares en la columna derecha */
+  .parrafo-colmena:nth-child(even) {
+    grid-column: 3; /* Asigna a la tercera columna del grid */
+    text-align: left;
+    margin-left: 20px; /* Separación para que el "pico" no toque la línea */
+  }
+  
+  /* Crea el "pico" de la burbuja que apunta a la línea de tiempo */
+  .parrafo-colmena::after {
+    content: '';
+    position: absolute;
+    top: 25px;
+    width: 0;
+    height: 0;
+    border-style: solid;
+  }
+  
+  /* Pico para las burbujas de la izquierda (apunta a la derecha) */
+  .parrafo-colmena:nth-child(odd)::after {
+    right: -20px; /* Posiciona el pico a la derecha */
+    border-width: 15px 0 15px 20px;
+    border-color: transparent transparent transparent #ffffff;
+  }
+  
+  /* Pico para las burbujas de la derecha (apunta a la izquierda) */
+  .parrafo-colmena:nth-child(even)::after {
+    left: -20px; /* Posiciona el pico a la izquierda */
+    border-width: 15px 20px 15px 0;
+    border-color: transparent #ffffff transparent transparent;
+  }
+  
+  /* Estilos internos de la burbuja */
+  .parrafo-colmena h5 {
+    font-weight: 700;
+    color: #333;
+    font-size: 1.2rem;
+    margin-bottom: 0.5rem;
+  }
+  
+  .parrafo-colmena p {
+    font-size: 1rem;
+    line-height: 1.6;
+    color: #555;
+    margin-bottom: 0;
+  }
+  
+  /* 3. ESTADO FINAL DE LA ANIMACIÓN (cuando el JS añade la clase .visible) */
+  .parrafo-colmena.visible {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+  
+  /* Ajustes para pantallas pequeñas (móviles) */
+  @media (max-width: 768px) {
+    .historia-timeline {
+      /* En móviles, volvemos a una sola columna */
+      display: block;
+    }
+    .historia-timeline::before {
+      /* La línea ahora está a la izquierda */
+      left: 20px; 
+    }
+    .parrafo-colmena:nth-child(odd),
+    .parrafo-colmena:nth-child(even) {
+      grid-column: auto; /* Reseteamos el grid */
+      text-align: left;
+      margin-left: 40px; /* Dejamos espacio para la línea */
+      margin-right: 0;
+      margin-bottom: 30px;
+    }
+    .parrafo-colmena:nth-child(odd)::after,
+    .parrafo-colmena:nth-child(even)::after {
+       /* Todos los picos apuntan a la izquierda */
+      left: -20px;
+      border-width: 15px 20px 15px 0;
+      border-color: transparent #ffffff transparent transparent;
+    }
+  }
+  
+  .icono-flotante {
+    position: fixed; /* Se posiciona relativo a la ventana del navegador */
+    top: 50%;
+    left: 50%;
+    width: 60px;     /* Ancho del icono */
+    height: 60px;    /* Alto del icono */
+    object-fit: contain;
+    z-index: 9999;   /* Asegura que esté por encima de todo */
+    pointer-events: none; /* Evita que la imagen bloquee los clics en otros elementos */
+  }

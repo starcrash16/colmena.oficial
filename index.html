@@ -1,0 +1,207 @@
+<!doctype html>
+<html lang="en" class="h-100" data-bs-theme="auto">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="René De Anda">
+    <title>Colmena Oficial</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="/header.css">
+    <link rel="stylesheet" href="/main.css">
+    <link rel="stylesheet" href="/footer.css">
+  </head>
+  <body class="text-center text-bg-dark">
+    
+    <!-- Pantalla de introducción -->
+    <div class="intro-screen" id="introScreen">
+      <img src="img/LOGO COLMENA.png" alt="Colmena Icon" class="intro-icon">
+      <div class="intro-text">¡Presiona el logo!<br> O no <br> O nada </div>
+    </div>
+
+    <!-- Contenido principal -->
+    <div class="cover-container d-flex w-100 h-100 mx-auto flex-column main-content" id="mainContent">
+      <header class="mb-2">
+        <nav class="navbar navbar-expand-md navbar-light bg-white fixed-top">
+          <div class="container-fluid">
+            <!-- Logo y título (más grande) -->
+            <a class="navbar-brand d-flex align-items-center" href="index.html">
+              <img href="index.html" src="img/colmena.png" alt="Colmena Logo" class="header-logo me-2">
+              <h3 class="mb-0 header-title">Colmena</h3>
+            </a>
+            
+            <!-- Botón hamburguesa -->
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+            
+            <!-- Menú de navegación (más espacio entre opciones) -->
+            <div class="collapse navbar-collapse" id="navbarCollapse">
+              <ul class="navbar-nav ms-auto mb-2 mb-md-0 nav-masthead">
+                <li class="nav-item">
+                  <a class="nav-link fw-bold active" aria-current="page" href="index.html">Inicio</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link fw-bold" href="historia.html">¿Quiénes Somos?</a>
+                </li>
+                <li class="nav-item">
+                  <a href="https://www.instagram.com/p/DMswwbQgJqD/" class="nav-link fw-bold" href="evento.html">Evento Cultural</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link fw-bold" href="https://linktr.ee/colmena_mx">Contacto</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </nav>
+      </header>
+    
+      <!-- Main expandido a todo el ancho -->
+      <main class="mt-5 px-0 mb-0">
+        <div class="w-100">
+          <img src="/img/colmena-menu.png" class="img-fluid w-100" alt="Descripción">
+        </div>
+        
+        <!-- Div animado que aparece desde abajo -->
+        <div class="bienvenida bg-light">
+          <!-- Contenedor principal con Bootstrap -->
+          <div class="container-fluid">
+              <div class="row justify-content-center">
+                  <div class="col-12">
+                      <div class="animated-content" id="animatedContent">
+                          <!-- Usando el sistema de grid de Bootstrap para mejor control responsivo -->
+                          <div class="container">
+                              <div class="row justify-content-center">
+                                  <div class="col-12 col-md-10 col-lg-8 col-xl-7">
+                                      <div class="content-text p-4 p-md-5 fade-in">
+                                          <h2 class="display-5 mb-4">¡Bienvenido a Colmena!</h2>
+                                          
+                                          <p class="mb-4">
+                                              Somos un grupo de personas comprometidas con impulsar la creación de una comunidad universitaria y social que fomente la búsqueda de conocimiento.
+                                          </p>
+                                          
+                                          <p class="">
+                                              Nuestro objetivo principal es transformar el proceso universitario en una experiencia enriquecedora que vaya más allá de lo académico, promoviendo la interacción entre personas, el intercambio de ideas y la exploración de temas de interés común.
+                                          </p>
+                                      </div>
+                                  </div>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+          </div>
+        </div>
+      </main>
+
+      <!-- Sección de botones con imágenes -->
+      <div class="botones-grid">
+        <!-- 1ª fila -->
+        <div class="img-derecha">
+          <img src="/img/dij.png" alt="Imagen derecha" class="section-image">
+        </div>
+        <div class="boton-centro-1">
+          <button id="boton1" class="boton-colmena">
+            ¿Por qué somos Colmena?
+            <span></span><span></span><span></span><span></span>
+          </button>
+        </div>
+      
+        <!-- 2ª fila -->
+        <div class="boton-centro-2">
+          <button  id="boton2" class="boton-colmena">
+            1er Evento Cultural Colmena
+            <span></span><span></span><span></span><span></span>
+          </button>
+        </div>
+        <div class="img-izquierda">
+          <img src="/img/talento Colmena.png" alt="Imagen izquierda" class="section-image">
+        </div>
+      </div>
+
+
+  
+      <footer class="footer-colmena py-3 mt-4">
+        <div class="container">
+          <div class="row align-items-center">
+            
+            <!-- Lado izquierdo -->
+            <div class="col-md-6 d-flex align-items-center mb-3 mb-md-0">
+                <img src="img/colmenant.png" alt="Colmena Logo" class="header-logo me-2">
+                <h3 class="mb-0 header-title">© Colmena, Derechos de Autor.</h3>
+              </a>
+            </div>
+            
+            <!-- Lado derecho -->
+            <div class="col-md-6 text-md-end text-center">
+              <a href="https://www.instagram.com/colmena.oficial/" target="" class="footer-icon me-2">
+                <i class="fa-brands fa-instagram"></i></a>
+              <a href="https://www.facebook.com/colmenaccademy" target="" class="footer-icon me-2">
+                <i class="fa-brands fa-facebook"></i></a>
+              <a href="https://www.tiktok.com/@colmena.oficial" target="" class="footer-icon">
+                <i class="fa-brands fa-tiktok"></i><a>
+            </div>
+      
+          </div>
+        </div>
+      </footer>
+      
+    </div>
+    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://kit.fontawesome.com/5d0e4396c8.js" crossorigin="anonymous"></script>
+    <script>
+      // Scroll to top when page loads
+      window.onload = function() {
+        window.scrollTo(0, 0);
+      };
+      
+      // Also scroll to top when page is refreshed
+      window.onbeforeunload = function() {
+        window.scrollTo(0, 0);
+      };
+
+        // Animación para que aparezcan al hacer scroll
+      // Mostrar botones cuando aparezcan en pantalla
+      // Mostrar sección cuando aparezca en pantalla
+      document.addEventListener('scroll', function() {
+      const seccion = document.querySelector('.botones-grid'); // cambio aquí
+      if (!seccion) return;
+
+      const rect = seccion.getBoundingClientRect();
+      const windowHeight = window.innerHeight;
+
+      if (rect.top < windowHeight - 100) {
+        seccion.classList.add('visible');
+      }
+    });
+
+    document.getElementById('boton1').addEventListener('click', function() {
+  window.location.href = 'historia.html';
+});
+
+document.getElementById('boton2').addEventListener('click', function() {
+  window.location.href = 'https://www.instagram.com/p/DMswwbQgJqD/';
+});
+
+
+      
+      document.addEventListener('DOMContentLoaded', function() {
+        // Scroll to top on DOM content loaded
+        window.scrollTo(0, 0);
+        
+        const introScreen = document.getElementById('introScreen');
+        const mainContent = document.getElementById('mainContent');
+        const body = document.body;
+        
+        introScreen.addEventListener('click', function() {
+          body.classList.add('activated');
+          introScreen.classList.add('fade-out');
+          setTimeout(() => {
+            mainContent.classList.add('show');
+          }, 500);
+        });
+      });
+    </script>
+  </body>
+</html>
